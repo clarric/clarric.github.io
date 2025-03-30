@@ -1,150 +1,39 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>納粹主題網站</title>
-    <link rel="icon" href="download.png" type="image/png"> <!-- 書籤圖標 -->
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0; /* 更柔和的背景色 */
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-            text-align: center;
-        }
-        h1 {
-            color: white;
-            background-color: #d32f2f; /* 使用更深的紅色 */
-            font-size: 3em; /* 字體大小調整 */
-            margin: 0;
-            padding: 20px; /* 增加內邊距 */
-            border-radius: 0 0 10px 10px; /* 圓角 */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 增加陰影效果 */
-        }
-        img {
-            max-width: 90%; /* 設置圖片最大寬度 */
-            height: auto;
-            margin: 20px 0; /* 上下邊距 */
-            border-radius: 10px; /* 圓角 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 增加陰影效果 */
-        }
-        .tabs {
-            display: flex;
-            background-color: #e57373; /* 淺紅色 */
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 20px 0; /* 增加邊距 */
-        }
-        .tab {
-            padding: 14px 20px;
-            cursor: pointer;
-            text-align: center;
-            flex: 1;
-            color: white;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold; /* 加粗文字 */
-        }
-        .tab:hover {
-            background-color: #c62828; /* 懸停效果 */
-            transform: scale(1.05);
-        }
-        .active {
-            background-color: #c62828; /* 活動標籤的顏色 */
-        }
-        .content {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: white;
-            display: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            color: #333;
-            margin: 20px; /* 增加邊距 */
-        }
-        .content.active {
-            display: block; /* 顯示當前活動的內容 */
-        }
-        .dark-mode {
-            background-color: #121212; /* 深色背景 */
-            color: #f1f1f1; /* 深色文字 */
-        }
-        .dark-mode .tabs {
-            background-color: #f44336; /* 深色模式下的紅色分頁背景 */
-        }
-        .dark-mode .tab {
-            color: white;
-        }
-        .dark-mode .toggle-button {
-            background-color: white;
-            color: black;
-        }
-        .toggle-button {
-            margin: 20px;
-            padding: 10px 20px;
-            background-color: #333; /* 按鈕顏色 */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: inline-block; /* 使按鈕顯示為區塊級元素 */
-            text-align: center;
-        }
-        .toggle-button:hover {
-            background-color: #555; /* 懸停效果 */
-        }
-    </style>
+    <title>我的网站</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-<h1>培邪中學頭條新聞</h1>
-<img src="https://github.com/erika-nazi/erika-nazi.github.io/raw/main/fatchan2.png" alt="圖片描述"/>
-<div class="tabs">
-    <div class="tab active" onclick="changeTab(0, 'home')">主頁</div>
-    <div class="tab" onclick="changeTab(1, 'history')">歷史背景</div>
-    <div class="tab" onclick="changeTab(2, 'thought')">主觀意識</div>
-    <div class="tab" onclick="changeTab(3, 'worldwar2')">WW2</div>
-    <div class="tab" onclick="changeTab(4, 'person')">重要人物</div>
-    <div class="tab" onclick="changeTab(5, 'references')">參考資料</div>
-</div>
-
-<div class="content active" id="content0">這是主頁的內容。</div>
-<div class="content" id="content1">這是歷史背景的內容。</div>
-<div class="content" id="content2">這是主觀意識的內容。</div>
-<div class="content" id="content3">這是WW2的內容。</div>
-<div class="content" id="content4">這是重要人物的內容。</div>
-<div class="content" id="content5">這是參考資料的內容。</div>
-
-<button class="toggle-button" id="modeToggle" onclick="toggleDarkMode()">切換深色模式</button>
-
-<script>
-    function changeTab(index, path) {
-        const contents = document.querySelectorAll('.content');
-        const tabs = document.querySelectorAll('.tab');
-
-        // 隱藏所有內容
-        contents.forEach(content => content.classList.remove('active'));
-
-        // 移除所有標籤的活動狀態
-        tabs.forEach(tab => tab.classList.remove('active'));
-
-        // 顯示當前選擇的內容和標籤
-        contents[index].classList.add('active');
-        tabs[index].classList.add('active');
-
-        // 更新 URL，替換原有的 URL
-        const newUrl = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}/${path}`;
-        history.replaceState(null, '', newUrl);
-    }
-
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        const button = document.getElementById('modeToggle');
-        button.textContent = document.body.classList.contains('dark-mode') ? '切換淺色模式' : '切換深色模式';
-    }
-</script>
-
+    <header style="background-color: Red;">
+        <div class="hi">
+            <h1 style="font-size: 250%; text-align:center;">Clarric's Blog</h1>
+        </div>
+    </header>
+    <div class="top-bar">
+        <p style="font-size: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <button class="hamburger" id="hamburger" style="color: White; font-size: 30px;">☰</button>
+    </div>
+    <img src="https://github.com/clarric/clarric.github.io/raw/main/images/bayerneee.webp" width="100%"/>
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li style="color:Blue;">categories</li>
+            <li><a href="../../../clarric.github.io">🏠 首页</a></li>
+            <li><a href="../../../clarric.github.io">📖 关于</a></li>
+            <li><a href="../../../clarric.github.io">🛠️ 服务</a></li>
+            <li><a href="../../../clarric.github.io">📧 联系我们</a></li>
+        </ul>
+    </nav>
+    <script>
+        // 確保 DOM 完全加載後再執行 JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('hamburger').addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>

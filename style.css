@@ -1,1 +1,30 @@
+/* 基本样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    overflow-x: hidden;
+}
 
+.tags {
+    position: fixed;
+    top: 30px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.tag {
+    color: white;
+    margin-right: 35px;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    color: grey;
+}
