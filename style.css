@@ -1,14 +1,42 @@
 /* 基本样式 */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Microsoft YaHei", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #000000;
     overflow-x: hidden;
 }
 
+.statement {
+    margin-top: 50px;
+    display: flex; /* Use Flexbox layout */
+    overflow: hidden; /* This will hide overflow content */
+    background: #444; /* Background for the statement area */
+    padding: 20px;
+    border-radius: 8px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.text {
+    flex: 1; /* Allow this div to take available space */
+    margin-right: 20px; /* Space between the divs */
+}
+
+.dashboard {
+    flex: 0.3; /* Allow this div to take more space */
+    background: #555; /* Background for the dashboard */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    color: white; /* Text color */
+    margin: 0; /* Remove default margin */
+}
+
 .tags {
-    position: fixed;
+    position: absolute;
     top: 30px;
     right: 10px;
     z-index: 1000;
@@ -22,9 +50,47 @@ body {
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: tomato;
 }
 
-a:hover {
-    color: grey;
+img {
+    width: 100%;
+    margin-top: 30px;
 }
+/* Nested Tabs Styles */
+.nested-tabs {
+    margin-top: 20px;
+}
+
+.nested-tab {
+    margin-bottom: 5px; /* Space between nested tabs */
+    cursor: pointer;
+}
+
+.nested-tab.active {
+    font-weight: bold;
+    color: #bbb;
+}
+
+.code-block {
+    background: #282c34; /* Dark background for code block */
+    color: #ffffff; /* White text color */
+    padding: 15px; /* Padding around the code */
+    border-radius: 10px; /* Rounded corners */
+    flex-grow: 15;
+    margin-top: 2px;
+    font-size: 15px;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.copy-button {
+    position: absolute; /* Position button within code block */
+    top: 10px; /* Adjust vertical position */
+    right: 10px; /* Adjust horizontal position */
+    padding: 5px 10px; /* Button padding */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+ }
