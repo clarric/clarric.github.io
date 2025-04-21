@@ -3,127 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的网站</title>
+    <title>Clarric's Blog</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/clarric/clarric.github.io/raw/main/images/logo.png">
     <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
 </head>
 <body>
-    <div id="eeee">
-        <h1 style="margin-top: 20px; margin-left: 30px; font-size: 40px;">
-            <a href="../clarric.github.io" style="color: tomato">Clarric's Blog</a>
-        </h1>
-        <div class="tags">
-            <span class="tag"><a href="../clarric.github.io" style="color:tomato">works</a></span>
-            <span class="tag"><a href="../clarric.github.io" style="color:tomato">archive</a></span>
-            <span class="tag"><a href="../clarric.github.io" style="color:tomato">tags</a></span>
-            <span class="tag"><a href="../clarric.github.io" style="color:tomato">about</a></span>
-            <span class="tag"><a href="../clarric.github.io" style="color:tomato">home</a></span>
-            <span class="tag"><a href="../clarric.github.io" style="color:tomato">&#128269;</a></span>
-        </div>
+<div id="eeee">
+    <h1 style="margin-top: 20px; margin-left: 30px; font-size: 40px;">
+        <a href="../clarric.github.io" style="color: tomato">Clarric's Blog</a>
+    </h1>
+    <div class="tags">
+        <span class="tag"><a href="works" style="color:tomato">works</a></span>
+        <span class="tag"><a href="archive" style="color:tomato">archive</a></span>
+        <span class="tag"><a href="tags" style="color:tomato">tags</a></span>
+        <span class="tag"><a href="about" style="color:tomato">about</a></span>
+        <span class="tag"><a href="../clarric.github.io" style="color:tomato">home</a></span>
     </div>
-    <div class="statement">
-        <div class="text">
-            <p style="font-size: 20px;">
-                <a href="/about" >2025/04/15</a>
-            </p>
-            <p style="font-size: 15px;">
-                <a href="../clarric.github.io" >#C++基礎</a>
-                <a href="../clarric.github.io">#C++</a>
-            </p>
-            <h1 style="margin-top: 30px;">C++ 基礎 ① : 開發環境</h1>
-            <img src="https://github.com/clarric/clarric.github.io/raw/main/images/image1.jpg">
-            <h4 style="color: white;">
-                整合開發環境(IDE):<br>
-            </h4>
-            <h4 style="color: white;">
-                IDE 將程式碼編輯、編譯、調試等功能整合在一起，能提升開發效率。以下是常見的 IDE：<br><br><br>
-            </h4>
-            <h3 style="color: white;">
-                <br>Visual Studio Code
-            </h3>
-            <h4 style="color: white;">
-                <ul>
-                    <li>擁有智慧程式碼提示、調試工具,支援多種程式語言<br></li>
-                    <li>內建命令列工具和 Git 版本控制系統。</li>
-                </ul>
-            </h4>
-            <h3 style="color: white;">
-                <br>CLion
-            </h3>
-            <h4 style="color: white;">
-                <ul>
-                    <li>由 JetBrains 開發，具備程式碼補全、重構功能。<br></li>
-                    <li>提供對 Cmake 的支持</li>
-                </ul>
-            </h4>
-            <h3 style="color: white;">
-                <br>Code::Blocks
-            </h3>
-            <h4 style="color: white;">
-                <ul>
-                    <li>喀，不知道。(應該也很厲害)<br><br></li>
-                </ul>
-            </h4>
-            <h4 style="color: white;">
-                大家應該都會使用 Visual Studio Code 吧！反正我最喜歡用Clion(其實我所有編程開發都是依靠JetBrains的)。
-            </h4>
-            <br>
-            <br>
-            <h3 style="color: white;">
-                接下來示範一下Clion的安裝(因為應該沒有人的電腦是沒有VSCode的吧)：
-            </h3>
-            <br>
-            <h4 style="color: white;">
-                第一步：來到 JetBrains 官方網站中的Clion下載區
-                <a href="https://jetbrains.com/clion/">jetbrains.com/clion/</a>。
-            </h4>
-            <img src="https://github.com/clarric/clarric.github.io/raw/main/images/image3.png">
-            <h4 style="color: white;">
-                第二步：下載Clion安裝器，通常是.exe檔案，安裝部份自己處理吧！(其實這沒必要說)。
-            </h4>
-            <img src="https://github.com/clarric/clarric.github.io/raw/main/images/image4.png">
-            <h4 style="color: white">
-                最後：寫一條自以為很厲害的代碼(有點扯)。
-            </h4>
-            <div class="code-block">
-                <pre><code>
-#include &lt;bits/stdc++&gt;<br>
-using namespace std;<br>
-int main(){<br>
-    cout&lt;&lt;"Hello World!"&lt;&lt;endl; //輸出Hello World!<br>
-    return 0;<br>
-}
+</div>
 
-                </code></pre>
-            </div>
-            <div id="container"></div>
-            <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-            <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-            <script>
-                var gitment = new Gitment({
-                id: '页面 ID', // 可选。默认为 location.href
-                owner: '你的 GitHub ID',
-                repo: '存储评论的 repo',
-                oauth: {
-                    client_id: '你的 client ID',
-                    client_secret: '你的 client secret',
-                },
-                })
-                gitment.render('container')
-            </script>
-        </div>
+<div class="statement">
+    <div class="text">
+        <h2>Lastest Posts</h2>
+        <table>
+            <tr>
+                <th><h3>排名</h3></th>
+                <th><h3>標題</h3></th>
+                <th><h3>更新日期</h3></th>
+                <th><h3>主要標籤</h3></th>
+            </tr>
+            <tr>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">1</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">C++高精度加法</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">2025/05/07</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">高精度</a></h3></th>
+            </tr>
+        </table>
+        <h1> ^(oo)^ </h1>
+        <h2><br></h2>
+        <h2>Most Popular Posts</h2>
+        <table>
+            <tr>
+                <th><h3>排名</h3></th>
+                <th><h3>標題</h3></th>
+                <th><h3>更新日期</h3></th>
+                <th><h3>主要標籤</h3></th>
+            </tr>
+            <tr>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">1</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">C++高精度加法</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">2025/05/07</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">高精度</a></h3></th>
+            </tr>
+        </table>
+        <h1> ^(oo)^ </h1>
+        <h2><br></h2>
+        <h2>My Favourite Posts</h2>
+        <table>
+            <tr>
+                <th><h3>排名</h3></th>
+                <th><h3>標題</h3></th>
+                <th><h3>更新日期</h3></th>
+                <th><h3>主要標籤</h3></th>
+            </tr>
+            <tr>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">1</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">C++高精度加法</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">2025/05/07</a></h3></th>
+                <th><h3><a href="date/2025/05/07/cpp_hpadd.html">高精度</a></h3></th>
+            </tr>
+        </table>
+    </div>
+    <div class="dashboard">
+        <h2 style="color: tomato;">categories</h2>
+        <h3 style="color: white; margin-top: 50px;"><a href="categories/coding">C++</a></h3>
+        <ul>
+            <li><a href="categories/coding">C++高精度</a></li>
+            <li><a href="categories/coding">C++二分</a></li>
+            <li><a href="categories/coding">C++dp背包</a></li>
+        </ul>
+    </div>
+</div>
 
-        <div class="dashboard">
-            <h2 style="color: tomato;">categories</h2>
-            <h3 style="color: white; margin-top: 50px;"><a href="/categories/coding" >coding</a></h3>
-            <ul>
-                <li><a href="categories/coding" >C++基礎</a></li>
-                <li><a href="categories/coding" >C++進階</a></li>
-            </ul>
-        </div>
+<div class="footer">
+    <div class="de">
+        <a href="https://github.com/clarric/clarric.github.io"><img src="https://github.com/clarric/clarric.github.io/raw/main/images/githubicon.svg"></a>
+        <a href="https://www.facebook.com/profile.php?id=61565945086452"><img src="https://github.com/clarric/clarric.github.io/raw/main/images/facebookicon.svg"></a>
+        <a href="https://www.luogu.com.cn/user/1468081"><img src="https://github.com/clarric/clarric.github.io/raw/main/images/luoguicon.png"></a>
     </div>
 
-    <script>
+</div>
 
-    </script>
 </body>
 </html>
