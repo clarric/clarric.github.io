@@ -1,59 +1,68 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #002e50;
+    background-color: #115580;
     margin: 0;
     padding: 20px;
-    font-weight: 300; /* 設置為細字體 */
-    scroll-behavior: smooth; /* 啟用平滑滾動 */
+    font-weight: 400;
 }
 
-.text p {
-    font-size: 15px; /* 調整段落字體大小 */
-    font-weight: 300; /* 確保段落字體為細 */
-    color: #333; /* 字體顏色 */
+a {
+    text-decoration: none;
+    color: tomato;
 }
 
-h1, h2, h3, h4 {
-    font-weight: 400; /* 標題稍微加粗 */
-    color: white;
+code {
+    font-family: Consolas, 'Courier New', Courier, monospace;
 }
 
-h4 {
-    color: white; /* 確保標題顏色為白色 */
+.categories-title { /*分類標題*/
+    margin-top: 30px;
 }
 
-.statement {
+.text p { /*開場白*/
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+}
+
+h1, h2, h3, h4 { /*文本*/
+    font-weight: 400;
+    color: #000000;
+}
+
+.title { /*文本標題*/
+    color: #000000;
+    text-align: left;
+}
+.statement { /*主版面*/
     margin-top: 50px;
-    display: flex; /* 使用 Flexbox 佈局 */
-    overflow: hidden; /* 隱藏溢出內容 */
-    background: #000000; /* 聲明區域的背景 */
+    display: flex;
+    background: #ffffff;
     padding: 20px;
-    position: relative;
     margin-left: -20px;
     margin-right: -20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.text {
-    flex: 1; /* 允許此 div 使用可用空間 */
-    margin-right: 80px; /* div 之間的間距 */
-    font-weight: 300;
+.text { /*blog文本*/
+    flex: 1;
+    margin-right: 80px;
     margin-left: 300px;
 }
 
-.proboard {
+.proboard { /*目錄*/
     flex: 0 0 250px;
-    background: #000000; /* 儀表板的背景 */
-    padding: 10px;
+    background: #ffffff;
+    padding-left: 30px;
+    padding-right: 30px;
     position: fixed;
     border-radius: 8px;
+    margin-top: 20px;
 }
 
 .dashboard {
-    flex: 0.3; /* 允許此 div 使用更多空間 */
-    background: #000000; /* 儀表板的背景 */
+    flex: 0.3;
+    background: #ffffff;
     padding: 20px;
-    border-radius: 8px;
 }
 
 th {
@@ -65,6 +74,23 @@ tr {
     margin-top: 80px;
 }
 
+.article {
+    box-shadow: 3px 3px 3px 3px rgba(0.2, 0.2, 0.2, 0.2);
+    border-radius: 5px;
+    background: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.date {
+    background: tomato;
+    color: black;
+    width: 10.5%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
 .tags {
     position: absolute;
     top: 30px;
@@ -73,15 +99,12 @@ tr {
 }
 
 .tag {
-    color: white;
+    color: tomato;
     margin-right: 35px;
     font-size: 16px;
 }
 
-a {
-    text-decoration: none;
-    color: tomato;
-}
+
 
 .de img {
     width: 3%;
@@ -96,40 +119,34 @@ img {
     width: 70%;
 }
 
-/* Nested Tabs Styles */
-.nested-tabs {
-    margin-top: 30px;
-}
-
-.nested-tab {
-    margin-bottom: 5px; /* 嵌套標籤之間的間距 */
-    cursor: pointer;
-}
-
-.nested-tab.active {
-    font-weight: bold;
-    color: #bbb;
-}
-
 .footer {
-    background: #002e50;
+    background: #115580;
     height: 50px;
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 .code-block {
-    background: #282c34; /* 代碼塊的深色背景 */
-    color: #ffffff; /* 白色文本顏色 */
-    padding: 15px; /* 代碼周圍的填充 */
-    border-radius: 10px; /* 圓角 */
+    background: #000000;
+    color: #ffffff;
+    padding: 15px;
     flex-grow: 15;
     margin-top: 2px;
-    font-size: 15px;
-    overflow-x: auto; /* 如有需要，啟用水平滾動 */
+    font-size: 18px;
+    overflow-x: auto;
 }
-
+.pns {
+    position: absolute;
+    top: 1000px;
+    right: 10px;
+    z-index: 1000;
+}
 .pn {
-    height : 40px;
-    width: 60px;
+    height : 70px;
+    width: 120px;
     text-align: center;
+    padding-top: 1px;
     background-color: tomato;
+    border-radius: 5px;
+    color: white;
 }

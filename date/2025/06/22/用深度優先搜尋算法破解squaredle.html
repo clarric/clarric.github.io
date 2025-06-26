@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Clarric">
+    <meta name="description" content="Clarric's Blog">
+    <title>Clarric's Blog</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/clarric/clarric.github.io/raw/main/images/logo.png">
+    <link rel="stylesheet" href="../../../../style.css">
+</head>
+<body>
+<div id="header">
+    <h1 style="margin-top: 20px; margin-left: 30px; font-size: 40px;">
+        <a href="../../../../../clarric.github.io" style="color: tomato">Clarric's Blog</a>
+    </h1>
+    <div class="tags">
+        <span class="tag"><a href="../../../../works">works</a></span>
+        <span class="tag"><a href="../../../../archive">archive</a></span>
+        <span class="tag"><a href="../../../../tags">tags</a></span>
+        <span class="tag"><a href="../../../../about">about</a></span>
+        <span class="tag"><a href="../../../../../clarric.github.io">home</a></span>
+    </div>
+</div>
+
+<div class="statement">
+    <div class="proboard">
+        <h2>目錄</h2>
+        <h3><a href="#abstract">前言</a></h3>
+        <h3><a href="#thought">想法</a></h3>
+        <h3><a href="#achieve">實現</a></h3>
+        <h3><a href="#problem">出現問題</a></h3>
+    </div>
+    <div class="text">
+        <h1 style="margin-top: 30px;">用深度優先搜尋算法破解squaredle</h1>
+        <h3 style="color: tomato">最新一次改動：2025/06/22</h3>
+        <div id="abstract">
+            <div class="title"><h2>前言</h2></div>
+            <h4>
+                前一陣子，我在我朋友的介紹下認識了一個英文詞彙遊戲叫squaredle(英文詞彙版連連看)。遊戲的玩法請查看<a href="https://squares.org">這裏</a>。
+                而我這個懶人包加上英文廢柴玩了1個小時都沒能過關，於是便打算做一個squaredle破解器(雖然應該有人做過了)。
+            </h4>
+            <h4>
+                說實在的，其實這個歎巨的任務對我這個沒甚麼開發Project經驗的我來說實在是無從下手。
+                我開始發揮我的想像力，首先，要連一個字是不是需要一個起點字母？從一個字母連到另一個字母是不是有幾個分支可以走？要如何保證由幾個字母組成的字存在？突然，我有了個保證做到效果但時間不如人意的想法。
+            </h4>
+        </div>
+        <div id="thought">
+            <h2><br></h2>
+            <div class="title"><h2>想法</h2></div>
+            <h4>
+                我的想法說了大家都應該不驚訝，沒錯！就是深度優先搜索DFS！這想法應該不難想且不難實現，因為我們可以根據從某一個格子做起點，從它的正上、正下、正左、正右、左上、左下、右上、右下遍歷，當遍歷的層數大於等於4時，
+                就檢查一下已連的字在不在字典集當中，整體不難實現。
+            </h4>
+            <h4>
+                整個想法其實就是走迷宮，只不過哪一格都可以作為起點並且分支比較多，所以如果有些的長度很長(有試過14 letter)，那遍歷就需要比較長時間了。
+            </h4>
+        </div>
+        <div id="achieve">
+            <h2><br></h2>
+            <div class="title"><h2>如何實現？</h2></div>
+            <h4>
+                就算是英文水平再高的母語人士，也不能說出所有英文單詞吧！所以作為一個英文學渣，我直接上github拿了別人收集的46萬英文單詞words.txt集合，當然，為了防止squaredle官方玩不起，出一些生僻字，
+                我把word_alpha.txt和google-10000-english.txt這兩個字串集都下載下來。
+            </h4>
+            <h4>
+                DFS方面，我把三個英文單詞集匯成一個集合，然後再DFS就成功了，以下是核心代碼：
+            </h4>
+            <div class="code-block" id="python">
+                <code>python3</code>
+                <pre><code>
+board = [   #這裏直接hard code懶得做輸入
+    ['Y', 'I', 'G', 'V'],
+    ['N', 'B', 'T', 'A'],
+    ['N', 'S', 'U', 'D'],
+    ['S', 'E', 'L', 'C']
+]
+vis = [[0]*4 for _ in range(4)] #這是格子訪問記錄
+go = [] #這是連格子時的路徑
+ans = [] #所有連得的詞
+step = {} #所有連得的詞的路徑
+
+def dfs(x, y, word):
+    if not (0 <= x < 4 and 0 <= y < 4): return
+    if vis[y][x]: return
+    word = word + board[y][x].lower()
+    vis[y][x] = 1
+    go.append((x, y))
+    if word in words and len(word) >= 4: #words是那46萬字的集合，具體儲存方法是秘密
+        ans.append(word)
+        step[word] = go.copy()
+    for tx in range(-1, 2, 1):
+        for ty in range(-1, 2, 1):
+            if tx != 0 or ty != 0:
+                dfs(x + tx, y + ty, word)
+    vis[y][x] = 0
+    path.pop()
+                </code></pre>
+            </div>
+        </div>
+        <div id="problem">
+            <h2><br></h2>
+            <div class="title"><h2>出現問題</h2></div>
+            <h4>
+                就在我喜極而泣之時，我運行了一下程序並拿了之前的squaredle測試了一下，結果發現用時竟然需要20多秒！其實以前的我也不會把時間當一回事，我只要求完成的結果符不符合預期，
+                但是，想一下，一個squaredle破解器需要20多秒運轉，別人看了都不想用，這豈不是太衰了？我必須要想辦法加快它的速度，但具體要如何加快呢，或者說，我需要換一個字典的儲存方式嗎？
+            </h4>
+        </div>
+        <h2>未完待續~~~</h2>
+    </div>
+
+    <div class="dashboard">
+        <h2>categories</h2>
+        <div class="categories-title"><h3><a href="../../../../categories/python">Python</a></h3></div>
+        <ul>
+            <li><a href="../../../../categories/python/pyautogui">pyautogui</a></li>
+            <li><a href="../../../../categories/python/open-cv">open-cv</a></li>
+            <li><a href="../../../../categories/python/pygame">pygame</a></li>
+        </ul>
+        <div class="categories-title"><h3><a href="categories/C++算法">算法C++</a></h3></div>
+        <ul>
+            <li><a href="../../../../categories/C++算法/圖論">圖論</a></li>
+            <li><a href="../../../../categories/C++算法/二叉樹">二叉樹</a></li>
+            <li><a href="../../../../categories/C++算法/遞歸">遞推和遞歸</a></li>
+            <li><a href="../../../../categories/C++算法/DFS">深度優先搜尋DFS</a></li>
+            <li><a href="../../../../categories/C++算法/Luogu解題報告">Luogu解題報告</a></li>
+        </ul>
+        <div class="categories-title"><h3><a href="../../../../categories/數據處理">數據處理</a></h3></div>
+        <ul>
+            <li><a href="../../../../categories/數據處理/pandas">pandas</a></li>
+            <li><a href="../../../../categories/數據處理/matplotlib">matplotlib</a></li>
+            <li><a href="../../../../categories/數據處理/numpy">numpy</a></li>
+        </ul>
+        <div class="categories-title"><h3><a href="../../../../categories/模型訓練">模型訓練</a></h3></div>
+        <ul>
+            <li><a href="../../../../categories/模型訓練/YOLO">YOLO</a></li>
+            <li><a href="../../../../categories/模型訓練/roboflow">roboflow</a></li>
+            <li><a href="../../../../categories/模型訓練/colab">colab</a></li>
+        </ul>
+        <div class="categories-title"><h3><a href="../../../../categories/數學趣題">數學趣題</a></h3></div>
+        <ul>
+            <li><a href="../../../../categories/數學趣題/數論趣題">數論趣題</a></li>
+            <li><a href="../../../../categories/數學趣題/雜題">雜題</a></li>
+        </ul>
+        <div class="categories-title"><h3><a href="../../../../categories/初等代數">初等代數</a></h3></div>
+        <ul>
+            <li><a href="../../../../categories/初等代數/一次和二次函數">一次和二次函數</a></li>
+            <li><a href="../../../../categories/初等代數/代數不等式">代數不等式</a></li>
+            <li><a href="../../../../categories/初等代數/多項式">多項式</a></li>
+            <li><a href="../../../../categories/初等代數/幂次函數">幂次函數</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="de">
+        <a href="https://github.com/clarric/clarric.github.io"><img src="https://github.com/clarric/clarric.github.io/raw/main/images/githubicon.svg"></a>
+        <a href="https://www.facebook.com/profile.php?id=61565945086452"><img src="https://github.com/clarric/clarric.github.io/raw/main/images/facebookicon.svg"></a>
+        <a href="https://www.luogu.com.cn/user/1468081"><img src="https://github.com/clarric/clarric.github.io/raw/main/images/luoguicon.png"></a>
+    </div>
+</div>
+<script>
+    // 這裡可以添加 JavaScript
+</script>
+</body>
+</html>
